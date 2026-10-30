@@ -205,7 +205,7 @@ body:has(.entry.sea){background:linear-gradient(135deg,#22d3ee,#34d399 50%,#bef2
 .house{position:relative}.house .roof{height:34px;margin:0 6px;background:#b45309;clip-path:polygon(50% 0,100% 100%,0 100%)}
 .house .hbody{position:relative;background:#fde68a;border:3px solid #92400e;border-bottom:0;padding:8px 6px;color:#1f2937}
 .house .hbody::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 22px,rgba(71,85,105,.75) 22px 25px)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .st{background:var(--card);color:var(--ink);border-radius:14px;padding:6px 4px;text-align:center;box-shadow:0 3px 0 rgba(0,0,0,.15);border-bottom:4px solid #94a3b8}.st span{font-size:22px}.st b{display:block;font-size:26px;line-height:1.1}.st small{color:var(--mut);font-size:11px}
 .st.sh{border-color:#0ea5e9}.st.sw{border-color:#ef4444}.st.sc{border-color:#f97316}.st.sd{border-color:#eab308}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.acts button{font-size:clamp(17px,3.4vw,24px);padding:16px 8px}.acts button small{display:block;font-size:11px;font-weight:600}
@@ -251,7 +251,7 @@ body:has(.entry.sea){background:linear-gradient(135deg,#22d3ee,#34d399 50%,#bef2
 .kd .st span{font-size:clamp(22px,4.2vmin,54px)}.kd .st b{font-size:clamp(26px,5.4vmin,70px)}.kd .st small{font-size:clamp(11px,1.9vmin,22px)}
 .kd .acts{gap:clamp(10px,1.6vmin,22px);align-items:stretch}.kd .acts button{font-size:clamp(16px,2.7vmin,36px);padding:clamp(14px,3vmin,44px) 8px;border-radius:clamp(14px,2vmin,26px)}.kd .acts button small{font-size:clamp(11px,1.7vmin,20px)}
 .kd .feed{font-size:clamp(13px,2vmin,24px);padding:clamp(8px,1.2vmin,16px) clamp(10px,1.6vmin,22px);border-radius:clamp(14px,2vmin,24px)}
-@media(max-width:560px){.kd .stats{grid-template-columns:repeat(4,1fr)}.kd .st span{font-size:20px}.kd .st b{font-size:22px}.kd .st small{font-size:10px}}
+@media(max-width:560px){.kd .stats{grid-template-columns:repeat(3,1fr)}.kd .st span{font-size:20px}.kd .st b{font-size:22px}.kd .st small{font-size:10px}}
 </style>
 <style id="pg-smooth">@media (prefers-reduced-motion:no-preference){@keyframes pgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 #app.pg-in{animation:pgIn .32s cubic-bezier(.2,.8,.3,1) both}
@@ -259,7 +259,7 @@ body:has(.entry.sea){background:linear-gradient(135deg,#22d3ee,#34d399 50%,#bef2
 .sb tr{transition:background-color .25s}.ch{transition:opacity .4s,filter .4s,transform .3s}.ch.gone,.ch.pr{animation:pgIn .45s ease-out both}
 .bigq,.bigx,.acts button{transition:transform .12s,box-shadow .12s,filter .18s,background-color .2s}.bigx:not(:disabled):active,.bigq:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.25)}}
 </style>
-<style id="inf-css">.inf{flex:0 0 auto;display:inline-grid;place-items:center;width:24px;height:24px;margin-left:6px;vertical-align:middle;border-radius:50%;padding:0;border:2px solid currentColor;background:rgba(255,255,255,.55);color:#0369a1;font:italic 800 14px/1 Georgia,serif;cursor:pointer;box-shadow:none;transition:transform .15s,background-color .15s}.inf:hover{transform:scale(1.12);background:#fff}.kban .inf{color:inherit}.acts .wi{position:relative;display:flex}.acts .wi>button{flex:1}.acts .wi .inf{position:absolute;right:8px;top:8px;margin:0}#infpop{position:fixed;z-index:100000;background:#0f172a;color:#f1f5f9;border:1px solid #334155;border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.6;box-shadow:0 12px 32px rgba(0,0,0,.45);white-space:pre-line;text-align:left;max-width:360px;animation:pgIn .18s ease-out both}.kban{display:flex;align-items:center;gap:6px}</style></head><body><div class="wrap" id="app"></div><div id="toast"></div><div id="modal"><div class="box" id="mbox"></div></div><script>
+<style id="inf-css">.inf{flex:0 0 auto;display:inline-grid;place-items:center;width:24px;height:24px;margin-left:6px;vertical-align:middle;border-radius:50%;padding:0;border:2px solid currentColor;background:rgba(255,255,255,.55);color:#0369a1;font:italic 800 14px/1 Georgia,serif;cursor:pointer;box-shadow:none;transition:transform .15s,background-color .15s}.inf:hover{transform:scale(1.12);background:#fff}.kban .inf{color:inherit}.acts .wi{position:relative;display:flex}.acts .wi>button{flex:1}.acts .wi .inf{position:absolute;right:8px;top:8px;margin:0}#infpop{position:fixed;z-index:100000;background:#0f172a;color:#f1f5f9;border:1px solid #334155;border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.6;box-shadow:0 12px 32px rgba(0,0,0,.45);white-space:pre-line;text-align:left;max-width:360px;animation:pgIn .18s ease-out both}.kban{display:flex;align-items:center;gap:6px}</style><style id="v2-css">.sb .tm{display:inline-flex;align-items:center;gap:4px;margin:2px 6px 2px 0;padding:2px 9px 2px 3px;border-radius:999px;background:rgba(0,0,0,.06);vertical-align:middle}.sb .tm.gone{filter:none;opacity:.6;background:rgba(239,68,68,.14)}.tmn{font-size:13px;font-weight:700;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tm.gone .tmn{text-decoration:line-through}.tm .avs{flex:0 0 auto}.tm.gone .avs{filter:grayscale(1)}.fullnote{margin:8px 0;padding:10px 12px;border-radius:12px;background:#fef3c7;color:#78350f;font-weight:700;text-align:center}.pbar{display:flex;gap:6px;justify-content:center;margin:8px 0}.pbar i{width:34px;height:12px;border-radius:6px;background:#cbd5e1}.pbar i.on{background:#22c55e}</style><style id="v3-css">.tms{font-size:11px;font-weight:700;opacity:.75;white-space:nowrap}</style></head><body><div class="wrap" id="app"></div><div id="toast"></div><div id="modal"><div class="box" id="mbox"></div></div><script>
 
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const CFG=window.FBCFG,ADM=window.APPMODE=='admin';let TOK=null,RT=null,ME=null,ADMPW=null,OFF=0,busy=false,DRG=-1,SK=0,CQ=null,CB=null,RCB=null,IU=null,DQ=null,H=[],ST={ok:0,bad:0},T=[{name:''}],cur=0,Q=[],CUR=[],RAW=null;const IM={},HW={on:false};
@@ -459,15 +459,16 @@ function land(){app(`<div class="entry gold"><i class="fl f1">🏰</i><i class="
 async function takenAv(){let P={};try{P=(await fb(G('players/'+CODE)))||{}}catch(e){}const O=Object.entries(P).filter(([id])=>id!=ME);return O.length>=AV.length?new Set():new Set(O.map(([,v])=>v.av))}
 async function drawAv(){const box=$('#avs');if(!box)return;const T=await takenAv();if(T.has(AVSEL)){const f=AV.find(a=>!T.has(a));if(f)AVSEL=f}
  box.innerHTML=AV.map(a=>`<button type="button" class="avb${a==AVSEL?' on':''}" data-a="${a}" title="${AVN[a]}${T.has(a)?' (đã có người chọn)':''}"${T.has(a)?' disabled':''} onclick="AVSEL='${a}';document.querySelectorAll('.avb').forEach(x=>x.classList.toggle('on',x.dataset.a==AVSEL))">${avH(a)}</button>`).join('')}
+function gameOf(s){return s.game||(s.ini!==undefined||s.ts!==undefined?'kingdom':'gold')}
 async function codeNext(){const c=$('#jC').value.trim().toUpperCase();if(!c)return er('Nhập mã game.');er('Đang kiểm tra…');
- try{const s=await fb(G('sessions/'+c));if(!s)return er('Mã không đúng.');if(s.status=='ended'||(s.status=='running'&&Date.now()>s.end+3e5))return er('🔒 Game này đã kết thúc.');if(s.status=='running')return er('🔒 Game đã bắt đầu, không thể vào thêm.');CODE=c;S=s;
+ try{const s=await fb(G('sessions/'+c));if(!s||gameOf(s)!='kingdom')return er('Mã không đúng.');if(s.status=='ended'||(s.status=='running'&&Date.now()>s.end+3e5))return er('🔒 Game này đã kết thúc.');if(s.status=='running')return er('🔒 Game đã bắt đầu, không thể vào thêm.');CODE=c;S=s;
   app(`<div class="entry gold"><i class="fl f1">🏰</i><i class="fl f2">⚔️</i><i class="fl f3">⭐</i><i class="fl f4">🛡️</i><i class="fl f5">👑</i><i class="fl f6">✨</i><div class="ecard pick"><div class="ebadge">🎮</div><h2>${esc(s.title||c)}</h2><p class="hint" style="margin:2px 0 6px"><b>${c}</b>${INF('Mã '+c+' · '+s.nq+' câu hỏi · chơi theo đội')}</p><div class="vkw"><input class="fld" id="jN" placeholder="Tên của em" maxlength="30"><button type="button" class="vkb" title="Bàn phím ảo" aria-label="Bàn phím ảo" onclick="vk('jN')">⌨️</button></div><div style="font-weight:700;font-size:13px;margin-top:8px">Chọn nhân vật</div><div id="avs"></div><p id="jE" style="color:var(--badc);font-weight:700;min-height:1.3em"></p><button onclick="join()" style="width:100%;font-size:20px">▶ Vào phòng chờ</button></div></div>`);
   await drawAv();clearInterval(window.AVT);window.AVT=setInterval(()=>{$('#avs')?drawAv():clearInterval(window.AVT)},2500);$('#jN').focus()}catch(e){er('Lỗi: '+e.message)}}
 const NKN=x=>String(x||'').trim().replace(/\s+/g,' ').toLowerCase();const isKk=(KK,id,v)=>{const k=KK&&KK[id];return !!k&&(!v||NKN(k.name)==NKN(v.name))};
 async function join(){const nm=$('#jN').value.trim();if(!nm)return er('Nhập tên của em.');er('Đang vào…');
  try{await syncT();{const s0=await fb(G('sessions/'+CODE));if(s0&&s0.kicked&&s0.kicked[ME]&&NKN(s0.kicked[ME].name)==NKN(nm))return er('🚫 Tên này đã bị loại khỏi phòng. Em hãy đổi tên khác để vào lại.')}if((await takenAv()).has(AVSEL)){await drawAv();return er('😅 Nhân vật này vừa có bạn khác chọn, em chọn con khác nhé!')}const NK=x=>String(x||'').trim().replace(/\s+/g,' ').toLowerCase();{const P0=await fb(G('players/'+CODE))||{};if(Object.entries(P0).some(([id,v])=>id!=ME&&NK(v.name)==NK(nm)))return er('😅 Tên này đã có bạn dùng rồi, em nhập tên khác nhé!')}await fb(G(`players/${CODE}/${ME}`),'PUT',{name:nm,av:AVSEL,gold:100,ok:0,bad:0});{const T2=await fb(G('players/'+CODE))||{};if(Object.entries(T2).some(([id,v])=>id!=ME&&id<ME&&NK(v.name)==NK(nm))){await fb(G(`players/${CODE}/${ME}`),'DELETE');return er('😅 Tên này đã có bạn dùng rồi, em nhập tên khác nhé!')}const E2=Object.entries(T2).filter(([id])=>id!=ME&&id<ME);if(E2.length<AV.length&&E2.some(([,v])=>v.av==AVSEL)){await fb(G(`players/${CODE}/${ME}`),'DELETE');await drawAv();return er('😅 Nhân vật này vừa có bạn khác chọn, em chọn con khác nhé!')}}clearInterval(window.AVT);LS('kingdomgame',{code:CODE,rt:RT,id:ME});await enter()}catch(e){er('Lỗi: '+e.message)}}
 
-async function resume(){const v=LS('kingdomgame');if(!v)return false;try{RT=v.rt;ME=v.id;CODE=v.code;await fbRefresh();await syncT();S=await fb(G('sessions/'+CODE));const PR=await fb(G(`players/${CODE}/${ME}`));if(S&&isKk(S.kicked,ME,PR)){gotKicked(S.kicked[ME]);return true}if(!S||S.status=='ended'||!PR)return false;await enter();return true}catch(e){return false}}
+async function resume(){const v=LS('kingdomgame');if(!v)return false;try{RT=v.rt;ME=v.id;CODE=v.code;await fbRefresh();await syncT();S=await fb(G('sessions/'+CODE));if(S&&gameOf(S)!='kingdom'){LS('kingdomgame',null);return false}const PR=await fb(G(`players/${CODE}/${ME}`));if(S&&isKk(S.kicked,ME,PR)){gotKicked(S.kicked[ME]);return true}if(!S||S.status=='ended'||!PR)return false;await enter();return true}catch(e){return false}}
 
 function gotKicked(k){if(ENDED)return;ENDED=true;NOLOG=true;window.SYNC=null;clearInterval(TK);clearInterval(TI);clearInterval(window.AVT);try{close_()}catch(e){}{document.querySelectorAll('#lbw,#hud').forEach(x=>x.remove())}LS('kingdomgame',null);
  app(`<div class="card" style="text-align:center"><div class="big">🚫</div><h2>Em đã bị mời ra khỏi phòng ${INF('Em có thể đổi tên khác để vào lại.')}</h2><button onclick="location.reload()">Thoát</button></div>`)}
@@ -486,20 +487,23 @@ function mkTeamsFrom(g){const nm=shuffle([...KN.keys()]),out={};g.forEach((m,i)=
 function mkTeams(ids,size){const g=mkGroups(ids,size);return g&&mkTeamsFrom(g)}
 const TEAML=S_=>Object.values((S_&&S_.teams)||{}).map(t=>({...t,m:[].concat(t.m||[])})).sort((a,b)=>a.id<b.id?-1:1);
 /* Phát lại nhật ký -> trạng thái trò chơi */
-function replay(S_,mv){const L=TEAML(S_),ini=0,TS={},loc={},home={},log=[];let over=false;
- L.forEach(t=>{TS[t.id]={id:t.id,def:ini,atk:ini,out:false};t.m.forEach(p=>{home[p]=t.id;loc[p]=t.id})});
+const MAXV=5,ESCN=3;
+function replay(S_,mv){const L=TEAML(S_),TS={},loc={},home={},log=[],ec={};let over=false;
+ L.forEach(t=>{TS[t.id]={id:t.id,def:0,atk:0,out:false};t.m.forEach(p=>{home[p]=t.id;loc[p]=t.id})});
  const ids=Object.keys(home).sort(),castle=t=>ids.filter(p=>home[p]==t&&loc[p]==t),jail=t=>ids.filter(p=>loc[p]==t&&home[p]!=t),alive=()=>L.filter(t=>!TS[t.id].out);
+ /* Khiên/kiếm là của CẢ ĐỘI (tối đa MAXV mỗi loại); mỗi người trả lời đúng thì cộng vào kho chung */
  for(const[k,v]of mv){if(over)break;if(!v||typeof v!='object')continue;const A=home[v.p];if(!A||TS[A].out)continue;const a=TS[A];
-  if(v.k=='d'||v.k=='a'){const n=v.n==2?2:1;a[v.k=='d'?'def':'atk']+=n;log.push({key:k,kind:v.k,A,p:v.p,n});continue}
+  if(v.k=='d'||v.k=='a'){const n=v.n==2?2:1,f=v.k=='d'?'def':'atk',o0=a[f];a[f]=Math.min(MAXV,a[f]+n);log.push({key:k,kind:v.k,A,p:v.p,n:a[f]-o0});continue}
+  if(v.k=='c'){if(loc[v.p]!=A){ec[v.p]=(ec[v.p]|0)+1;if(ec[v.p]>=ESCN){const J=loc[v.p];loc[v.p]=A;ec[v.p]=0;log.push({key:k,kind:'esc',A,B:J,p:v.p,q:v.p})}}continue}
   if(v.k!='x')continue;const to=v.to,b=TS[to];if(!b||b.out||to==A||a.atk<1)continue;
-  a.atk--;const r=hs(k),e={key:k,kind:'block',A,B:to,p:v.p};
+  const r=hs(k),jl=jail(to),cs=castle(to);if(b.def<=0&&!jl.length&&!cs.length)continue;
+  a.atk--;const e={key:k,kind:'block',A,B:to,p:v.p};
   if(b.def>0)b.def--;
-  else{const jl=jail(to);
-   if(jl.length){const q=jl[r%jl.length];loc[q]=home[q];e.kind='free';e.q=q;a.atk++}
-   else{const cs=castle(to);if(!cs.length)continue;const q=cs[r%cs.length];loc[q]=A;e.kind='cap';e.q=q;a.atk++;b.def+=2;
-    if(!castle(to).length){b.out=true;b.def=0;jail(to).forEach(z=>loc[z]=home[z]);e.kind='fall'}}}
+  else if(jl.length){const q=jl.includes(v.q)?v.q:jl[r%jl.length];loc[q]=home[q];ec[q]=0;e.kind='free';e.q=q}
+  else{const q=cs.includes(v.q)?v.q:cs[r%cs.length];loc[q]=A;ec[q]=0;e.kind='cap';e.q=q;
+   if(!castle(to).length){b.out=true;b.def=0;jail(to).forEach(z=>{loc[z]=home[z];ec[z]=0});e.kind='fall'}}
   log.push(e);if(alive().length<=1)over=true}
- return{TS,loc,home,log,over,teams:L,ids,castle,jail}}
+ return{TS,loc,home,log,over,teams:L,ids,castle,jail,esc:ec}}
 function rankT(R){return R.teams.map(t=>({t,s:R.TS[t.id],c:R.castle(t.id).length,j:R.jail(t.id).length})).sort((a,b)=>(a.s.out-b.s.out)||(b.c-a.c)||(b.j-a.j)||((b.s.def+b.s.atk)-(a.s.def+a.s.atk))||(a.t.id<b.t.id?-1:1))}
 /* Nhật ký hành động trên Firebase */
 let MV=new Map(),LASTK='',MVC='';
@@ -514,8 +518,9 @@ function evText(e,S_,P){const T=S_.teams||{},tn=id=>T[id]?T[id].em+' <b>'+esc(T[
  if(e.kind=='block')return `🛡️ ${tn(e.A)} tấn công ${tn(e.B)} nhưng bị chặn lại!`;
  if(e.kind=='cap')return `⚔️ ${tn(e.A)} bắt được ${pn(e.q)} của ${tn(e.B)}!`;
  if(e.kind=='free')return `🔓 ${tn(e.A)} đánh vào ${tn(e.B)} và giải cứu ${pn(e.q)}!`;
- if(e.kind=='fall')return `🏴 ${tn(e.B)} đã sụp đổ! ${pn(e.q)} bị ${tn(e.A)} bắt.`;return ''}
-function teamRows(S_,R,P,me){return rankT(R).map((r,i)=>{const t=r.t,mem=t.m.map(p=>{const inC=R.loc[p]==t.id;return `<span class="tm${inC?'':' gone'}" title="${esc((P[p]||{}).name||'')}${inC?'':' (bị giam)'}">${avH((P[p]||{}).av,'26px')}</span>`}).join('');
+ if(e.kind=='fall')return `🏴 ${tn(e.B)} đã sụp đổ! ${pn(e.q)} bị ${tn(e.A)} bắt.`;
+  if(e.kind=='esc')return `🏃 ${pn(e.q)} của ${tn(e.A)} đã trốn thoát khỏi ${tn(e.B)}!`;return ''}
+function teamRows(S_,R,P,me){return rankT(R).map((r,i)=>{const t=r.t,mem=t.m.map(p=>{const inC=R.loc[p]==t.id;return `<span class="tm${inC?'':' gone'}" title="${esc((P[p]||{}).name||'')}${inC?'':' (bị giam)'}">${avH((P[p]||{}).av,'26px')}<small class="tmn">${inC?'':'⛓️ '}${esc((P[p]||{}).name||'…')}</small></span>`}).join('');
   return `<tr class="${t.id==me?'mine':''}${r.s.out?' dead':''}"><td>${RANK_MD[i]||i+1}</td><td><span style="color:${t.col};font-weight:800">${t.em} ${esc(t.name)}</span><div>${mem}</div></td><td>👥 ${r.c}</td><td>⛓️ ${r.j}</td><td>🛡️${r.s.def} ⚔️${r.s.atk}</td><td>${r.s.out?'💀':'🟢'}</td></tr>`}).join('')}
 const TEAMHEAD='<tr><th>#</th><th>Vương quốc</th><th title="Nhân vật còn trong thành">Thành</th><th title="Tù binh đang giam">Giam</th><th>Lượt</th><th></th></tr>';
 const ENDWHY=(S_,R_)=>R_&&R_.over?'over':(S_&&S_.status=='ended'&&now()<(S_.end||0)-1500?'admin':'time');
@@ -526,17 +531,15 @@ function sumK(S_,P,LG,Qs,me,R){const rk=rankT(R),w=rk[0],mine=R.home[me],mr=rk.f
  <h3>❗ Câu hỏi cần lưu ý (sai nhiều)</h3>${hard.length?hard.map(x=>`<div style="text-align:left;margin:8px 0"><div><b>Câu ${x.i+1}.</b> ${esc(((Qs[x.i]||{}).q||'').slice(0,160))}</div><div class="bar" style="width:${Math.max(4,x.p)}%"></div><span class="hint">Sai ${x.w}/${x.n} lượt (${x.p}%)</span></div>`).join(''):'<p class="hint">Chưa có câu nào bị sai.</p>'}`}
 const RULES_HTML=`<div style="text-align:left;line-height:1.5"><h3 style="text-align:center">📜 Luật chơi</h3><ul style="padding-left:18px;margin:6px 0">
 <li>👥 Mỗi bạn thuộc một <b>vương quốc</b> (đội) chia ngẫu nhiên. Nhân vật của đội ở trong <b>🏰 thành trì</b>; kẻ địch bị bắt sẽ ở trong <b>🏠 nhà giam</b> của đội em.</li>
-<li>🛡️⚔️ Đội có <b>lượt phòng thủ</b> và <b>lượt tấn công</b> (lúc đầu <b>mỗi đội đều bằng 0</b>, phải trả lời đúng để kiếm).</li>
-<li>❓ Trả lời <b>đúng</b> để được chọn: <b>🛡️ Khiên</b> (+1 phòng thủ) hoặc <b>⚔️ Kiếm</b> (+1 tấn công). Trả lời sai thì không được thưởng và <b>bắt buộc làm lại đúng câu đó</b> (đáp án được xáo lại) cho tới khi đúng mới được đi tiếp; làm lại không tính điểm.</li>
-<li>⚔️ Có ít nhất 1 lượt tấn công là được <b>Tấn công</b>: chọn một vương quốc khác (chỉ thấy tên và số nhân vật). Mỗi lần tấn công mất 1 lượt tấn công.</li>
-<li>🛡️ Bị tấn công mà còn phòng thủ: mất 1 lượt phòng thủ, không ai bị bắt.</li>
-<li>💥 Bị tấn công mà phòng thủ = 0: nếu đội đó đang giữ <b>tù binh</b> thì tù binh được <b>giải cứu trước</b> (về lại thành của họ); hết tù binh mới bắt <b>1 nhân vật</b> của đội đó đem về nhà giam.</li>
+<li>🛡️⚔️ Mỗi bạn trả lời đúng sẽ <b>tích lũy cho cả đội</b>: <b>🛡️ Khiên</b> (+1 phòng thủ) hoặc <b>⚔️ Kiếm</b> (+1 tấn công). Lúc đầu đội có 0; mỗi đội chỉ tích lũy tối đa <b>5 🛡️ và 5 ⚔️</b>.</li>
+<li>❓ Trả lời sai thì không được thưởng và <b>bắt buộc làm lại đúng câu đó</b> (đáp án được xáo lại) cho tới khi đúng mới được đi tiếp; làm lại không tính điểm.</li>
+<li>📦 Khi đội đủ <b>5 🛡️ và 5 ⚔️</b>, lượt kế tiếp chỉ còn nút <b>⚔️ Tấn công</b>. Khi khiên hoặc kiếm giảm dưới 5 thì lại được trả lời để nhận thưởng.</li>
+<li>⚔️ Đội còn ít nhất 1 kiếm thì <b>bất kỳ bạn nào cũng được Tấn công bất cứ lúc nào</b> (kể cả khi đang làm câu hỏi): chọn một vương quốc khác, rồi chọn đúng <b>tên người chơi</b> muốn bắt. Mỗi lần tấn công mất 1 kiếm của đội.</li>
+<li>🛡️ Bị tấn công mà còn phòng thủ: mất 1 khiên, không ai bị bắt.</li>
+<li>💥 Bị tấn công mà phòng thủ = 0: nếu đội đó đang giữ <b>tù binh</b> thì tù binh được <b>giải cứu trước</b> (em chọn người muốn cứu, họ về lại thành của họ); hết tù binh mới bắt người em đã chọn đem về nhà giam.</li>
 <li>💀 Đội bị bắt hết nhân vật sẽ <b>thua</b>. Đội cuối cùng còn đứng vững thắng. Hết giờ thì xếp hạng theo số nhân vật còn trong thành, rồi số tù binh.</li>
-</ul><b>✨ Luật bổ sung cho vui:</b><ul style="padding-left:18px;margin:6px 0">
-<li>🔥 <b>Combo:</b> trả lời đúng 3 câu liên tiếp, phần thưởng của câu thứ 3 được <b>gấp đôi</b> (+2).</li>
-<li>🎯 <b>Đòn thắng:</b> đánh trúng (bắt người hoặc giải cứu) được hoàn lại 1 lượt tấn công.</li>
-<li>🧱 <b>Gia cố thành:</b> đội vừa bị bắt 1 người được tặng thêm 2 lượt phòng thủ để gượng dậy.</li>
-<li>🤝 <b>Bị giam vẫn chơi:</b> bạn bị bắt vẫn trả lời câu hỏi để giúp đội kiếm khiên và kiếm; đồng đội đánh vào đội đang giam em để cứu em!</li>
+</ul><b>✨ Luật bổ sung:</b><ul style="padding-left:18px;margin:6px 0">
+<li>🏃 <b>Trốn thoát:</b> bạn bị bắt có cơ hội tự thoát – trả lời đúng <b>3 câu</b> (tính từ lần trả lời đầu của mỗi câu) là được về lại thành. Đồng đội cũng có thể tấn công để cứu em!</li>
 </ul></div><button onclick="close_()" style="width:100%">Đã hiểu ▶</button>`;
 
 
@@ -589,38 +592,48 @@ function view(){if(ENDED||!S)return;const L=Object.entries(PL).map(([id,v])=>({i
  if(!S.teams||!R)return appP('<div class="card" style="text-align:center"><div class="big">🎲</div><h2>Đang chia đội…</h2></div>');
  const t=tmOf(MYT);
  if(!t)return appP(`<div class="card" style="text-align:center"><div class="big">😅</div><h2>Em vào phòng sau khi đã chia đội ${INF('Em xem các bạn chơi và chờ ván sau nhé.')}</h2></div>`);
- const ts=R.TS[MYT],castle=R.castle(MYT),jail=R.jail(MYT),mine=R.loc[ME],cap=mine!=MYT,capT=cap?tmOf(mine):null,targets=R.teams.filter(x=>x.id!=MYT&&!R.TS[x.id].out);
+ const ts=R.TS[MYT],ps=ts,castle=R.castle(MYT),jail=R.jail(MYT),mine=R.loc[ME],cap=mine!=MYT,capT=cap?tmOf(mine):null,targets=R.teams.filter(x=>x.id!=MYT&&!R.TS[x.id].out);
  const gone=t.m.filter(p=>R.loc[p]!=MYT);
  appP(`<div class="kd" style="--c:${t.col}"><div class="khead"><div class="ktn">${t.em} ${esc(t.name)}</div><div class="kt">⏱ <b id="hdT">--:--</b></div><button class="alt" onclick="showRank()" title="Bảng xếp hạng">🏆</button><button class="alt" onclick="modal(RULES_HTML)" title="Luật chơi">📜</button></div>
- ${ts.out?`<div class="kban dead">💀 Vương quốc của em đã sụp đổ ${INF('Em có thể theo dõi trận đấu nhé!')}</div>`:cap?`<div class="kban">⛓️ Em đang bị giam ở ${capT?capT.em+' '+esc(capT.name):'…'} ${INF('Vẫn trả lời câu hỏi để giúp đội, và đội hãy tấn công để cứu em!')}</div>`:''}
+ ${ts.out?`<div class="kban dead">💀 Vương quốc của em đã sụp đổ ${INF('Em có thể theo dõi trận đấu nhé!')}</div>`:cap?`<div class="kban">⛓️ Em đang bị giam ở ${capT?capT.em+' '+esc(capT.name):'…'} ${INF('Trả lời đúng 3 câu để tự trốn thoát, hoặc chờ đồng đội tấn công để cứu em!')}</div>`:''}
  <div class="scene"><div class="castle"><span class="flag">🚩</span><div class="ctit">🏰 Thành trì · ${castle.length}/${t.m.length} nhân vật</div><div class="cin">${avRow(castle,'52px')}${avRow(gone,'52px','gone')}</div></div>
  <div class="house"><div class="roof"></div><div class="hbody"><div class="ctit">🏠 Nhà giam · ${jail.length}</div><div class="hin">${jail.length?jail.map(p=>{const h=tmOf(R.home[p]);return `<div class="ch pr">${avH((PL[p]||{}).av,'44px')}<small>${esc((PL[p]||{}).name||'…')}<br>${h?h.em:''}</small></div>`}).join(''):'<i class="hint">Chưa có tù binh</i>'}</div></div></div></div>
- <div class="stats"><div class="st sh"><span>🛡️</span><b>${ts.def}</b><small>Phòng thủ</small></div><div class="st sw"><span>⚔️</span><b>${ts.atk}</b><small>Tấn công</small></div><div class="st sc"><span>🔥</span><b>${STR}</b><small>Chuỗi đúng</small></div><div class="st sd"><span>⭐</span><b>${OKN}</b><small>Câu đúng</small></div></div>
- ${ts.out?'':`<div class="acts"><button class="bigq" onclick="startQ()">❓ Trả lời câu hỏi</button><span class="wi"><button class="bigx" ${ts.atk<1||!targets.length?'disabled':''} onclick="pickTarget()">⚔️ Tấn công</button>${ts.atk<1?INF('Hết lượt tấn công – trả lời đúng rồi chọn ⚔️ Kiếm để có thêm.'):''}</span></div>`}
+ <div class="stats"><div class="st sh"><span>🛡️</span><b>${ps.def}</b><small>Phòng thủ</small></div><div class="st sw"><span>⚔️</span><b>${ps.atk}</b><small>Tấn công</small></div><div class="st sd"><span>⭐</span><b>${OKN}</b><small>Câu đúng</small></div></div>
+ ${ts.out?'':`${cap?`<div class="fullnote" style="background:#e0f2fe;color:#0c4a6e">🏃 Trốn thoát: trả lời đúng ${ESCN} câu · đã đúng ${R.esc[ME]|0}/${ESCN}<div class="pbar">${[0,1,2].map(i=>`<i class="${i<(R.esc[ME]|0)?'on':''}"></i>`).join('')}</div></div>`:(ps.def>=MAXV&&ps.atk>=MAXV?`<div class="fullnote">🛡️${ps.def}/${MAXV} ⚔️${ps.atk}/${MAXV} – đã đầy! Hãy ⚔️ tấn công vương quốc khác. Khi khiên giảm dưới ${MAXV} em lại được trả lời để nhận thưởng.</div>`:'')}<div class="acts">${cap?`<button class="bigq" onclick="startQ()">🏃 Trả lời để trốn thoát</button>`:(ps.def>=MAXV&&ps.atk>=MAXV?'':`<button class="bigq" onclick="startQ()">❓ Trả lời câu hỏi</button>`)}<span class="wi"><button class="bigx" ${ps.atk<1||!targets.length?'disabled':''} onclick="pickTarget()">⚔️ Tấn công</button>${ps.atk<1?INF('Hết lượt tấn công – trả lời đúng rồi chọn ⚔️ Kiếm để có thêm.'):''}</span></div>`}
  <div class="feed"><b>📣 Diễn biến</b>${FEED.length?FEED.map(x=>`<div>${x}</div>`).join(''):'<div class="hint">Chưa có trận đánh nào…</div>'}${FEEDERR?`<div style="color:var(--badc)">⚠️ ${esc(FEEDERR)}</div>`:''}</div></div>`);
  clock();
  if(!RV){RV=true;if($('#modal').style.display!='flex')modal(`<div class="big pop">${t.em}</div><h3>Em thuộc <span style="color:${t.col}">${esc(t.name)}</span></h3><p>Đồng đội của em:</p><div class="cin" style="justify-content:center">${avRow(t.m,'56px')}</div><p class="hint">${INF('Trả lời đúng để nhận 🛡️ khiên hoặc ⚔️ kiếm. Bảo vệ thành, bắt tù binh, đừng để đội bị bắt hết!')}</p><button onclick="close_()" style="width:100%">⚔️ Vào trận</button><button class="alt" onclick="modal(RULES_HTML)" style="width:100%;margin-top:6px">📜 Xem luật chơi</button>`)}}
 function showRank(){if(!R)return;const L=ordT(PL).slice(0,5);modal(`<h3>🏆 Bảng xếp hạng vương quốc</h3><table class="sb">${TEAMHEAD}${teamRows(S,R,PL,MYT)}</table><h3>⭐ Top cá nhân</h3><table class="sb">${L.map((r,i)=>`<tr style="${r.id==ME?'font-weight:800':''}"><td>${RANK_MD[i]||i+1}</td><td>${avH(r.av)} ${esc(r.name)}</td><td>⭐ ${r.ok|0}</td></tr>`).join('')}</table><button onclick="close_()" style="width:100%">Đóng</button>`)}
 /* ---- Câu hỏi ---- */
-function hudPre(){const ts=R&&MYT?R.TS[MYT]:null;return ts?`<div class="qpre"><span>🛡️ ${ts.def}</span><span>⚔️ ${ts.atk}</span><span>🔥 ${STR}/3</span></div>`:''}
-function startQ(){if(ENDED||LOCK||!S||S.status!='running'||!QS.length)return;if(qi>=ORD.length){qi=0;ORD=shuffle(ORD)}const ix=ORD[qi++];NOLOG=false;
+const atkB=()=>{const ts=R&&MYT?R.TS[MYT]:null;return ts&&ts.atk>=1&&!ts.out?`<button type="button" class="alt" onclick="pickTarget()" style="margin-left:auto;padding:4px 12px">⚔️ Tấn công</button>`:''};
+function hudPre(){const ts=R&&MYT?R.TS[MYT]:null;return ts?`<div class="qpre"><span>🛡️ ${ts.def}</span><span>⚔️ ${ts.atk}</span>${atkB()}</div>`:''}
+function startQ(){if(ENDED||LOCK||!S||S.status!='running'||!QS.length)return;{const t0=R&&MYT?R.TS[MYT]:null;if(t0&&R.loc[ME]==MYT&&t0.def>=MAXV&&t0.atk>=MAXV)return}if(qi>=ORD.length){qi=0;ORD=shuffle(ORD)}const ix=ORD[qi++];NOLOG=false;
  QS[ix]=norm(QR[ix],true)||QS[ix];askQ(ix,false)}
 /* Câu sai: bắt buộc làm lại đúng câu đó (xáo lại đáp án) cho tới khi đúng mới được đi tiếp. Làm lại không tính điểm, không có thưởng. */
 function askQ(ix,retry){if(ENDED)return;NOLOG=!!retry;
  showQ(QS[ix],ok=>{if(ENDED)return;
   if(retry){if(ok){NOLOG=false;close_();view()}else{QS[ix]=norm(QR[ix],true)||QS[ix];askQ(ix,true)}return}
-  if(ok){STR++;reward(STR%3==0?2:1)}else{STR=0;QS[ix]=norm(QR[ix],true)||QS[ix];askQ(ix,true)}},
-  retry?`<div class="qpre"><span>🔁 Làm lại ${INF('Làm lại câu vừa sai – đúng mới được đi tiếp (không tính điểm).')}</span></div>`:hudPre())}
-function reward(n){modal(`<div class="big pop">🎉</div><h3>Chính xác!${n>1?' 🔥 Combo – phần thưởng gấp đôi!':''}</h3><p>Chọn phần thưởng của em:</p><div class="rwd"><button class="rb sh" onclick="choose('d',${n})"><span>🛡️</span><b>Khiên +${n}</b><small>Phòng thủ</small></button><button class="rb sw" onclick="choose('a',${n})"><span>⚔️</span><b>Kiếm +${n}</b><small>Tấn công</small></button></div>`)}
+  if(ok){STR++;if(R&&R.loc[ME]!=MYT)escOk();else reward(1)}else{STR=0;QS[ix]=norm(QR[ix],true)||QS[ix];askQ(ix,true)}},
+  retry?`<div class="qpre"><span>🔁 Làm lại ${INF('Làm lại câu vừa sai – đúng mới được đi tiếp (không tính điểm).')}</span>${atkB()}</div>`:hudPre())}
+function reward(n){const ts=R&&MYT?R.TS[MYT]:null,cd=!ts||ts.def<MAXV,ca=!ts||ts.atk<MAXV,gd=ts?Math.min(n,MAXV-ts.def):n,ga=ts?Math.min(n,MAXV-ts.atk):n;
+ if(!cd&&!ca)return modal(`<div class="big pop">🎉</div><h3>Chính xác!</h3><p>Đội đã đạt tối đa 🛡️${MAXV} và ⚔️${MAXV}. Hãy dùng ⚔️ tấn công vương quốc khác!</p><button onclick="close_();view()" style="width:100%">Đóng</button>`);
+ modal(`<div class="big pop">🎉</div><h3>Chính xác!</h3><p>${cd&&ca?'Chọn phần thưởng của em:':'Phần thưởng của em (phần còn lại đã đầy ' +MAXV+'/'+MAXV+'):'}</p><div class="rwd">${cd?`<button class="rb sh" onclick="choose('d',${n})"><span>🛡️</span><b>Khiên +${gd}</b><small>Phòng thủ ${ts?ts.def+'/'+MAXV:''}</small></button>`:''}${ca?`<button class="rb sw" onclick="choose('a',${n})"><span>⚔️</span><b>Kiếm +${ga}</b><small>Tấn công ${ts?ts.atk+'/'+MAXV:''}</small></button>`:''}</div>`)}
+/* Người bị giam: mỗi câu đúng (lần đầu) được ghi 1 'c' vào nhật ký; đủ ESCN câu thì replay cho tự do */
+async function escOk(){if(LOCK)return;LOCK=true;modal('<div class="big pop">⏳</div><p>Đang ghi nhận…</p>');
+ try{await post({k:'c'});await mvPoll(CODE);refresh();const n=R.esc[ME]|0,free=R.loc[ME]==MYT;
+  if(free)modal(`<div class="big pop">🏃</div><h3>Trốn thoát thành công!</h3><p>Em đã trả lời đúng ${ESCN} câu và trở về thành của đội.</p><button onclick="close_();view()" style="width:100%">Về thành ▶</button>`);
+  else modal(`<div class="big pop">🎉</div><h3>Chính xác!</h3><div class="pbar">${[0,1,2].map(i=>`<i class="${i<n?'on':''}"></i>`).join('')}</div><p>Đã đúng ${n}/${ESCN} câu – còn ${ESCN-n} câu nữa để trốn thoát.</p><button onclick="LOCK=false;startQ()" style="width:100%">Câu tiếp theo ▶</button><button class="alt" onclick="close_();view()" style="width:100%;margin-top:6px">Để sau</button>`)}catch(e){moveErr(e)}LOCK=false}
 async function post(m){const r=await fb(G('moves/'+CODE),'POST',{...m,p:ME,t:{'.sv':'timestamp'}});MV.set(r.name,{...m,p:ME});return r.name}
 function moveErr(e){modal(`<h3>⚠️ Không gửi được hành động</h3><p class="hint">${esc(e.message)}</p><button onclick="close_();view()">Đóng</button>`)}
 async function choose(k,n){if(LOCK)return;LOCK=true;document.querySelectorAll('#mbox button').forEach(b=>b.disabled=true);
  try{await post({k,n});await mvPoll(CODE);refresh();close_();view();toast(k=='d'?`🛡️ +${n} phòng thủ cho đội!`:`⚔️ +${n} tấn công cho đội!`,'#166534')}catch(e){moveErr(e)}LOCK=false}
 /* ---- Tấn công ---- */
 function pickTarget(){if(!R||LOCK)return;const ts=R.TS[MYT];if(ts.atk<1)return;const L=R.teams.filter(x=>x.id!=MYT&&!R.TS[x.id].out);
- modal(`<h3>⚔️ Tấn công vương quốc nào?</h3><div class="tgl2">${L.map(x=>`<button class="tg2 opt tgt" style="border-left:8px solid ${x.col}" onclick="attack('${x.id}')"><span class="tem">${x.em}</span><span>${esc(x.name)}</span><b>👥 ${R.castle(x.id).length}</b></button>`).join('')||'<p class="hint">Không còn vương quốc nào để đánh.</p>'}</div><button class="alt" onclick="close_()" style="width:100%">Huỷ</button>`)}
-async function attack(to){if(LOCK||!R)return;LOCK=true;document.querySelectorAll('#mbox button').forEach(b=>b.disabled=true);$('#mbox').insertAdjacentHTML('beforeend','<p class="hint">⚔️ Đang xuất quân…</p>');
- try{const key=await post({k:'x',to});await mvPoll(CODE);refresh();const e=R.log.find(x=>x.key==key),tt=tmOf(to),nm=p=>esc((PL[p]||{}).name||'?');let ic='⚠️',h;
+ modal(`<h3>⚔️ Tấn công vương quốc nào?</h3><div class="tgl2">${L.map(x=>`<button class="tg2 opt tgt" style="border-left:8px solid ${x.col}" onclick="pickMember('${x.id}')"><span class="tem">${x.em}</span><span>${esc(x.name)}</span><b>👥 ${R.castle(x.id).length}</b></button>`).join('')||'<p class="hint">Không còn vương quốc nào để đánh.</p>'}</div><button class="alt" onclick="close_()" style="width:100%">Huỷ</button>`)}
+function pickMember(to){if(!R||LOCK)return;const x=tmOf(to);if(!x||R.TS[to].out)return pickTarget();const jl=R.jail(to),res=jl.length>0,L=res?jl:R.castle(to);
+ modal(`<h3>${x.em} ${esc(x.name)}</h3><p class="hint">${res?'🔓 Đội này đang giữ tù binh – nếu hết khiên, tù binh được giải cứu trước. Chọn người em muốn cứu:':'🎯 Chọn nhân vật em muốn bắt (nếu đội này hết khiên, em sẽ bắt đúng bạn này):'}</p><div class="tgl2">${L.map(p=>`<button class="tg2 opt tgt" style="border-left:8px solid ${x.col}" onclick="attack('${to}','${p}')"><span class="tem">${avH((PL[p]||{}).av,'36px')}</span><span>${esc((PL[p]||{}).name||'…')}${res&&tmOf(R.home[p])?' <small>('+tmOf(R.home[p]).em+')</small>':''}</span><b>${res?'🔓':'⛓️'}</b></button>`).join('')||'<p class="hint">Không còn ai để chọn.</p>'}</div><button class="alt" onclick="pickTarget()" style="width:100%">◀ Chọn đội khác</button>`)}
+async function attack(to,who){if(LOCK||!R)return;LOCK=true;document.querySelectorAll('#mbox button').forEach(b=>b.disabled=true);$('#mbox').insertAdjacentHTML('beforeend','<p class="hint">⚔️ Đang xuất quân…</p>');
+ try{const key=await post(who?{k:'x',to,q:who}:{k:'x',to});await mvPoll(CODE);refresh();const e=R.log.find(x=>x.key==key),tt=tmOf(to),nm=p=>esc((PL[p]||{}).name||'?');let ic='⚠️',h;
   if(!e){h=`<h3>Đòn tấn công không thực hiện được</h3><p class="hint">Có thể đồng đội vừa dùng hết lượt tấn công, hoặc vương quốc đó vừa sụp đổ.</p>`}
   else if(e.kind=='block'){ic='🛡️';h=`<h3>${tt.em} ${esc(tt.name)} đã chặn được đòn!</h3><p>Họ mất 1 lượt phòng thủ. Đánh tiếp để phá khiên!</p>`}
   else if(e.kind=='cap'){ic='🎉';h=`<h3>Bắt được ${avH((PL[e.q]||{}).av,'44px')} ${nm(e.q)}!</h3><p>Tù binh đã bị đưa về 🏠 nhà giam của em. Hoàn lại 1 lượt tấn công 🎯</p>`}

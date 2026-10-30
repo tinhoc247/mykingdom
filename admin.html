@@ -267,7 +267,7 @@ button.vkb{all:unset;box-sizing:border-box;position:absolute;right:8px;top:50%;t
 .sb tr{transition:background-color .25s}.ch{transition:opacity .4s,filter .4s,transform .3s}.ch.gone,.ch.pr{animation:pgIn .45s ease-out both}
 .bigq,.bigx,.acts button{transition:transform .12s,box-shadow .12s,filter .18s,background-color .2s}.bigx:not(:disabled):active,.bigq:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.25)}}
 </style>
-</head><body><div class="wrap" id="app"></div><div id="toast"></div><div id="modal"><div class="box" id="mbox"></div></div><script>
+<style id="v2-css">.sb .tm{display:inline-flex;align-items:center;gap:4px;margin:2px 6px 2px 0;padding:2px 9px 2px 3px;border-radius:999px;background:rgba(0,0,0,.06);vertical-align:middle}.sb .tm.gone{filter:none;opacity:.6;background:rgba(239,68,68,.14)}.tmn{font-size:13px;font-weight:700;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tm.gone .tmn{text-decoration:line-through}.tm .avs{flex:0 0 auto}.tm.gone .avs{filter:grayscale(1)}.fullnote{margin:8px 0;padding:10px 12px;border-radius:12px;background:#fef3c7;color:#78350f;font-weight:700;text-align:center}.pbar{display:flex;gap:6px;justify-content:center;margin:8px 0}.pbar i{width:34px;height:12px;border-radius:6px;background:#cbd5e1}.pbar i.on{background:#22c55e}</style><style id="v3-css">.tms{font-size:11px;font-weight:700;opacity:.75;white-space:nowrap}</style></head><body><div class="wrap" id="app"></div><div id="toast"></div><div id="modal"><div class="box" id="mbox"></div></div><script>
 
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const CFG=window.FBCFG,ADM=window.APPMODE=='admin';let TOK=null,RT=null,ME=null,ADMPW=null,OFF=0,busy=false,DRG=-1,SK=0,CQ=null,CB=null,RCB=null,IU=null,DQ=null,H=[],ST={ok:0,bad:0},T=[{name:''}],cur=0,Q=[],CUR=[],RAW=null;const IM={},HW={on:false};
@@ -424,7 +424,7 @@ async function mk(){const er=m=>$('#sE').textContent=m;
  const ok=CUR.filter(o=>norm(o));if(!ok.length)return er('Hãy chọn bộ từ thư viện hoặc nạp file câu hỏi trước.');
  if($('#libAuto')&&$('#libAuto').checked){try{er('Đang lưu vào thư viện…');const id=await libSave($('#libName').value.trim()||$('#sT').value);CURLIB=id;er('Đang tạo…');return await mkFromLib(id)}catch(e){return er('⚠️ '+e.message)}}
  const q=JSON.parse(JSON.stringify(ok));q.forEach(o=>{for(const k of['image','preImage'])if(/^data:/.test(o[k]||''))o[k]=''});
- const code=ID(5);er('Đang tạo…');try{await fb(G('quiz/'+code),'PUT',JSON.stringify(q));await fb(G('sessions/'+code),'PUT',{code,title:$('#sT').value||code,dur:Math.max(1,+$('#sD').value||15),status:'waiting',ts:TSV(),ini:INV(),nq:q.length,extra:0,admin:ME,created:now()});rememberCode(code);ctl(code)}catch(e){er('⚠️ '+e.message)}}
+ const code=ID(5);er('Đang tạo…');try{await fb(G('quiz/'+code),'PUT',JSON.stringify(q));await fb(G('sessions/'+code),'PUT',{code,title:$('#sT').value||code,dur:Math.max(1,+$('#sD').value||15),game:'kingdom',status:'waiting',ts:TSV(),ini:INV(),nq:q.length,extra:0,admin:ME,created:now()});rememberCode(code);ctl(code)}catch(e){er('⚠️ '+e.message)}}
 const NKN=x=>String(x||'').trim().replace(/\s+/g,' ').toLowerCase();const isKk=(KK,id,v)=>{const k=KK&&KK[id];return !!k&&(!v||NKN(k.name)==NKN(v.name))};
 async function kickAsk(id,el){const p=(window.CP||{})[id];if(!window.CS||CS.status!='waiting'||!p||!CODE)return;
  try{await fb(G('sessions/'+CODE+'/kicked/'+id),'PUT',{name:p.name||'',t:{'.sv':'timestamp'}});
@@ -466,7 +466,7 @@ async function libSaveBtn(){const er=m=>$('#sE').textContent=m;if(!CUR.length)re
  try{const id=await libSave($('#libName').value.trim()||$('#sT').value);CURLIB=id;er('');await libFill()}catch(e){er('⚠️ '+e.message)}}
 async function mkFromLib(id,t,d){const qs=await fb(G('libq/'+id));if(!qs)throw Error('Không đọc được bộ câu hỏi trong thư viện (có thể đã bị xoá).');
  const n=JSON.parse(qs).length,code=ID(5);await fb(G('quiz/'+code),'PUT',qs);
- await fb(G('sessions/'+code),'PUT',{code,title:(t!=null?t:($('#sT')?$('#sT').value:''))||code,dur:Math.max(1,(d!=null?d:($('#sD')?+$('#sD').value:15))||15),status:'waiting',ts:TSV(),ini:INV(),nq:n,extra:0,admin:ME,created:now(),lib:id});libPlay(id);rememberCode(code);ctl(code)}
+ await fb(G('sessions/'+code),'PUT',{code,title:(t!=null?t:($('#sT')?$('#sT').value:''))||code,dur:Math.max(1,(d!=null?d:($('#sD')?+$('#sD').value:15))||15),game:'kingdom',status:'waiting',ts:TSV(),ini:INV(),nq:n,extra:0,admin:ME,created:now(),lib:id});libPlay(id);rememberCode(code);ctl(code)}
 function libNew(){libOvClose();const f=$('#file');if(f){f.scrollIntoView({block:'center'});f.focus()}}
 function libRep(){libOvClose();repList()}
 async function libView(){const o=libOv();o.innerHTML='<div class="lhd"><h2>📚 Thư viện của tôi</h2></div><p class="lnote">Đang tải thư viện…</p>';
@@ -541,7 +541,7 @@ async function repList(){clearInterval(CT);app('<div class="card"><p>Đang tải
  let L={},note='';try{L=(await fb(G('sessions')))||{}}catch(e){note='⚠️ Không đọc được danh sách chung ('+e.message+'). Chỉ hiện các mã đã tạo trên máy này.'}
  const codes=new Set([...Object.keys(L),...(LSG('kingdomCodes')||[])]);
  for(const c of codes)if(!L[c]){try{const s=await fb(G('sessions/'+c));if(s)L[c]=s}catch(e){}}
- const A=Object.entries(L).map(([id,s])=>({id,...s})).sort((a,b)=>(b.created||0)-(a.created||0));
+ const A=Object.entries(L).map(([id,s])=>({id,...s})).filter(s=>(s.game||(s.ini!==undefined||s.ts!==undefined?'kingdom':'gold'))=='kingdom').sort((a,b)=>(b.created||0)-(a.created||0));
  app(`<div class="card"><h2>📊 Các lượt chơi</h2>${note?`<p class="err">${esc(note)}</p>`:''}${A.length?`<table class="sb"><tr><th>Mã</th><th>Tên</th><th>Ngày</th><th>Trạng thái</th><th></th></tr>${A.map(s=>{const st=s.status=='ended'||(s.status=='running'&&now()>=s.end)?'🔒 Đã kết thúc':s.status=='running'?'🟢 Đang chơi':'⏳ Chờ';return`<tr><td><b>${esc(s.id)}</b></td><td>${esc(s.title||'')}</td><td>${fmtD(s.created)}</td><td>${st}</td><td style="white-space:nowrap"><button class="mini" onclick="rep('${s.id}')">Báo cáo</button> <button class="mini" onclick="ctl('${s.id}')">Phòng</button> <button class="mini" style="background:#ef4444" onclick="delSes('${s.id}')">🗑</button></td></tr>`}).join('')}</table>`:'<p>Chưa có lượt nào.</p>'}<div class="row"><button class="alt" onclick="home()">← Quay lại</button></div></div>`)}
 async function delSes(c){if(!confirm('Xóa lượt '+c+' cùng toàn bộ kết quả?\nKhông thể khôi phục.'))return;try{for(const p of['sessions','players','logs','quiz','moves'])await fb(G(p+'/'+c),'DELETE');LSG('kingdomCodes',(LSG('kingdomCodes')||[]).filter(x=>x!=c))}catch(e){return alert('Không xóa được: '+e.message)}repList()}
 async function rep(code){clearInterval(CT);app('<div class="card"><p>Đang tải báo cáo…</p></div>');
@@ -574,20 +574,23 @@ function mkTeamsFrom(g){const nm=shuffle([...KN.keys()]),out={};g.forEach((m,i)=
 function mkTeams(ids,size){const g=mkGroups(ids,size);return g&&mkTeamsFrom(g)}
 const TEAML=S_=>Object.values((S_&&S_.teams)||{}).map(t=>({...t,m:[].concat(t.m||[])})).sort((a,b)=>a.id<b.id?-1:1);
 /* Phát lại nhật ký -> trạng thái trò chơi */
-function replay(S_,mv){const L=TEAML(S_),ini=0,TS={},loc={},home={},log=[];let over=false;
- L.forEach(t=>{TS[t.id]={id:t.id,def:ini,atk:ini,out:false};t.m.forEach(p=>{home[p]=t.id;loc[p]=t.id})});
+const MAXV=5,ESCN=3;
+function replay(S_,mv){const L=TEAML(S_),TS={},loc={},home={},log=[],ec={};let over=false;
+ L.forEach(t=>{TS[t.id]={id:t.id,def:0,atk:0,out:false};t.m.forEach(p=>{home[p]=t.id;loc[p]=t.id})});
  const ids=Object.keys(home).sort(),castle=t=>ids.filter(p=>home[p]==t&&loc[p]==t),jail=t=>ids.filter(p=>loc[p]==t&&home[p]!=t),alive=()=>L.filter(t=>!TS[t.id].out);
+ /* Khiên/kiếm là của CẢ ĐỘI (tối đa MAXV mỗi loại); mỗi người trả lời đúng thì cộng vào kho chung */
  for(const[k,v]of mv){if(over)break;if(!v||typeof v!='object')continue;const A=home[v.p];if(!A||TS[A].out)continue;const a=TS[A];
-  if(v.k=='d'||v.k=='a'){const n=v.n==2?2:1;a[v.k=='d'?'def':'atk']+=n;log.push({key:k,kind:v.k,A,p:v.p,n});continue}
+  if(v.k=='d'||v.k=='a'){const n=v.n==2?2:1,f=v.k=='d'?'def':'atk',o0=a[f];a[f]=Math.min(MAXV,a[f]+n);log.push({key:k,kind:v.k,A,p:v.p,n:a[f]-o0});continue}
+  if(v.k=='c'){if(loc[v.p]!=A){ec[v.p]=(ec[v.p]|0)+1;if(ec[v.p]>=ESCN){const J=loc[v.p];loc[v.p]=A;ec[v.p]=0;log.push({key:k,kind:'esc',A,B:J,p:v.p,q:v.p})}}continue}
   if(v.k!='x')continue;const to=v.to,b=TS[to];if(!b||b.out||to==A||a.atk<1)continue;
-  a.atk--;const r=hs(k),e={key:k,kind:'block',A,B:to,p:v.p};
+  const r=hs(k),jl=jail(to),cs=castle(to);if(b.def<=0&&!jl.length&&!cs.length)continue;
+  a.atk--;const e={key:k,kind:'block',A,B:to,p:v.p};
   if(b.def>0)b.def--;
-  else{const jl=jail(to);
-   if(jl.length){const q=jl[r%jl.length];loc[q]=home[q];e.kind='free';e.q=q;a.atk++}
-   else{const cs=castle(to);if(!cs.length)continue;const q=cs[r%cs.length];loc[q]=A;e.kind='cap';e.q=q;a.atk++;b.def+=2;
-    if(!castle(to).length){b.out=true;b.def=0;jail(to).forEach(z=>loc[z]=home[z]);e.kind='fall'}}}
+  else if(jl.length){const q=jl.includes(v.q)?v.q:jl[r%jl.length];loc[q]=home[q];ec[q]=0;e.kind='free';e.q=q}
+  else{const q=cs.includes(v.q)?v.q:cs[r%cs.length];loc[q]=A;ec[q]=0;e.kind='cap';e.q=q;
+   if(!castle(to).length){b.out=true;b.def=0;jail(to).forEach(z=>{loc[z]=home[z];ec[z]=0});e.kind='fall'}}
   log.push(e);if(alive().length<=1)over=true}
- return{TS,loc,home,log,over,teams:L,ids,castle,jail}}
+ return{TS,loc,home,log,over,teams:L,ids,castle,jail,esc:ec}}
 function rankT(R){return R.teams.map(t=>({t,s:R.TS[t.id],c:R.castle(t.id).length,j:R.jail(t.id).length})).sort((a,b)=>(a.s.out-b.s.out)||(b.c-a.c)||(b.j-a.j)||((b.s.def+b.s.atk)-(a.s.def+a.s.atk))||(a.t.id<b.t.id?-1:1))}
 /* Nhật ký hành động trên Firebase */
 let MV=new Map(),LASTK='',MVC='';
@@ -602,8 +605,9 @@ function evText(e,S_,P){const T=S_.teams||{},tn=id=>T[id]?T[id].em+' <b>'+esc(T[
  if(e.kind=='block')return `🛡️ ${tn(e.A)} tấn công ${tn(e.B)} nhưng bị chặn lại!`;
  if(e.kind=='cap')return `⚔️ ${tn(e.A)} bắt được ${pn(e.q)} của ${tn(e.B)}!`;
  if(e.kind=='free')return `🔓 ${tn(e.A)} đánh vào ${tn(e.B)} và giải cứu ${pn(e.q)}!`;
- if(e.kind=='fall')return `🏴 ${tn(e.B)} đã sụp đổ! ${pn(e.q)} bị ${tn(e.A)} bắt.`;return ''}
-function teamRows(S_,R,P,me){return rankT(R).map((r,i)=>{const t=r.t,mem=t.m.map(p=>{const inC=R.loc[p]==t.id;return `<span class="tm${inC?'':' gone'}" title="${esc((P[p]||{}).name||'')}${inC?'':' (bị giam)'}">${avH((P[p]||{}).av,'26px')}</span>`}).join('');
+ if(e.kind=='fall')return `🏴 ${tn(e.B)} đã sụp đổ! ${pn(e.q)} bị ${tn(e.A)} bắt.`;
+  if(e.kind=='esc')return `🏃 ${pn(e.q)} của ${tn(e.A)} đã trốn thoát khỏi ${tn(e.B)}!`;return ''}
+function teamRows(S_,R,P,me){return rankT(R).map((r,i)=>{const t=r.t,mem=t.m.map(p=>{const inC=R.loc[p]==t.id;return `<span class="tm${inC?'':' gone'}" title="${esc((P[p]||{}).name||'')}${inC?'':' (bị giam)'}">${avH((P[p]||{}).av,'26px')}<small class="tmn">${inC?'':'⛓️ '}${esc((P[p]||{}).name||'…')}</small></span>`}).join('');
   return `<tr class="${t.id==me?'mine':''}${r.s.out?' dead':''}"><td>${RANK_MD[i]||i+1}</td><td><span style="color:${t.col};font-weight:800">${t.em} ${esc(t.name)}</span><div>${mem}</div></td><td>👥 ${r.c}</td><td>⛓️ ${r.j}</td><td>🛡️${r.s.def} ⚔️${r.s.atk}</td><td>${r.s.out?'💀':'🟢'}</td></tr>`}).join('')}
 const TEAMHEAD='<tr><th>#</th><th>Vương quốc</th><th title="Nhân vật còn trong thành">Thành</th><th title="Tù binh đang giam">Giam</th><th>Lượt</th><th></th></tr>';
 const ENDWHY=(S_,R_)=>R_&&R_.over?'over':(S_&&S_.status=='ended'&&now()<(S_.end||0)-1500?'admin':'time');
@@ -614,17 +618,15 @@ function sumK(S_,P,LG,Qs,me,R){const rk=rankT(R),w=rk[0],mine=R.home[me],mr=rk.f
  <h3>❗ Câu hỏi cần lưu ý (sai nhiều)</h3>${hard.length?hard.map(x=>`<div style="text-align:left;margin:8px 0"><div><b>Câu ${x.i+1}.</b> ${esc(((Qs[x.i]||{}).q||'').slice(0,160))}</div><div class="bar" style="width:${Math.max(4,x.p)}%"></div><span class="hint">Sai ${x.w}/${x.n} lượt (${x.p}%)</span></div>`).join(''):'<p class="hint">Chưa có câu nào bị sai.</p>'}`}
 const RULES_HTML=`<div style="text-align:left;line-height:1.5"><h3 style="text-align:center">📜 Luật chơi</h3><ul style="padding-left:18px;margin:6px 0">
 <li>👥 Mỗi bạn thuộc một <b>vương quốc</b> (đội) chia ngẫu nhiên. Nhân vật của đội ở trong <b>🏰 thành trì</b>; kẻ địch bị bắt sẽ ở trong <b>🏠 nhà giam</b> của đội em.</li>
-<li>🛡️⚔️ Đội có <b>lượt phòng thủ</b> và <b>lượt tấn công</b> (lúc đầu <b>mỗi đội đều bằng 0</b>, phải trả lời đúng để kiếm).</li>
-<li>❓ Trả lời <b>đúng</b> để được chọn: <b>🛡️ Khiên</b> (+1 phòng thủ) hoặc <b>⚔️ Kiếm</b> (+1 tấn công). Trả lời sai thì không được thưởng và <b>bắt buộc làm lại đúng câu đó</b> (đáp án được xáo lại) cho tới khi đúng mới được đi tiếp; làm lại không tính điểm.</li>
-<li>⚔️ Có ít nhất 1 lượt tấn công là được <b>Tấn công</b>: chọn một vương quốc khác (chỉ thấy tên và số nhân vật). Mỗi lần tấn công mất 1 lượt tấn công.</li>
-<li>🛡️ Bị tấn công mà còn phòng thủ: mất 1 lượt phòng thủ, không ai bị bắt.</li>
-<li>💥 Bị tấn công mà phòng thủ = 0: nếu đội đó đang giữ <b>tù binh</b> thì tù binh được <b>giải cứu trước</b> (về lại thành của họ); hết tù binh mới bắt <b>1 nhân vật</b> của đội đó đem về nhà giam.</li>
+<li>🛡️⚔️ Mỗi bạn trả lời đúng sẽ <b>tích lũy cho cả đội</b>: <b>🛡️ Khiên</b> (+1 phòng thủ) hoặc <b>⚔️ Kiếm</b> (+1 tấn công). Lúc đầu đội có 0; mỗi đội chỉ tích lũy tối đa <b>5 🛡️ và 5 ⚔️</b>.</li>
+<li>❓ Trả lời sai thì không được thưởng và <b>bắt buộc làm lại đúng câu đó</b> (đáp án được xáo lại) cho tới khi đúng mới được đi tiếp; làm lại không tính điểm.</li>
+<li>📦 Khi đội đủ <b>5 🛡️ và 5 ⚔️</b>, lượt kế tiếp chỉ còn nút <b>⚔️ Tấn công</b>. Khi khiên hoặc kiếm giảm dưới 5 thì lại được trả lời để nhận thưởng.</li>
+<li>⚔️ Đội còn ít nhất 1 kiếm thì <b>bất kỳ bạn nào cũng được Tấn công bất cứ lúc nào</b> (kể cả khi đang làm câu hỏi): chọn một vương quốc khác, rồi chọn đúng <b>tên người chơi</b> muốn bắt. Mỗi lần tấn công mất 1 kiếm của đội.</li>
+<li>🛡️ Bị tấn công mà còn phòng thủ: mất 1 khiên, không ai bị bắt.</li>
+<li>💥 Bị tấn công mà phòng thủ = 0: nếu đội đó đang giữ <b>tù binh</b> thì tù binh được <b>giải cứu trước</b> (em chọn người muốn cứu, họ về lại thành của họ); hết tù binh mới bắt người em đã chọn đem về nhà giam.</li>
 <li>💀 Đội bị bắt hết nhân vật sẽ <b>thua</b>. Đội cuối cùng còn đứng vững thắng. Hết giờ thì xếp hạng theo số nhân vật còn trong thành, rồi số tù binh.</li>
-</ul><b>✨ Luật bổ sung cho vui:</b><ul style="padding-left:18px;margin:6px 0">
-<li>🔥 <b>Combo:</b> trả lời đúng 3 câu liên tiếp, phần thưởng của câu thứ 3 được <b>gấp đôi</b> (+2).</li>
-<li>🎯 <b>Đòn thắng:</b> đánh trúng (bắt người hoặc giải cứu) được hoàn lại 1 lượt tấn công.</li>
-<li>🧱 <b>Gia cố thành:</b> đội vừa bị bắt 1 người được tặng thêm 2 lượt phòng thủ để gượng dậy.</li>
-<li>🤝 <b>Bị giam vẫn chơi:</b> bạn bị bắt vẫn trả lời câu hỏi để giúp đội kiếm khiên và kiếm; đồng đội đánh vào đội đang giam em để cứu em!</li>
+</ul><b>✨ Luật bổ sung:</b><ul style="padding-left:18px;margin:6px 0">
+<li>🏃 <b>Trốn thoát:</b> bạn bị bắt có cơ hội tự thoát – trả lời đúng <b>3 câu</b> (tính từ lần trả lời đầu của mỗi câu) là được về lại thành. Đồng đội cũng có thể tấn công để cứu em!</li>
 </ul></div><button onclick="close_()" style="width:100%">Đã hiểu ▶</button>`;
 
 const TSV=()=>2,INV=()=>0;
@@ -707,4 +709,23 @@ var m1=modal;modal=function(){var was=mo.style.display==='flex'||(Date.now()-lc<
 var c1=close_;close_=function(){lc=Date.now();return c1.apply(this,arguments)};
 var cn=window.codeNext;if(typeof cn==='function'){codeNext=async function(){var r=await cn.apply(this,arguments);var c=document.getElementById('lobc');if(c){c.classList.remove('sm-pg');void c.offsetWidth;c.classList.add('sm-pg')}return r}}
 })()</script>
+<script id="selpk-js">
+/* Danh sách chọn đáp án rộng, tự xuống dòng (thay cho dropdown mặc định bị tràn khi đáp án dài) – chỉ dùng với chuột */
+(function(){var d=document,ov=null,st=d.createElement('style');
+st.textContent='#mbox select{max-width:100%;text-overflow:ellipsis}#selpk{position:fixed;inset:0;z-index:2147482000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:14px}'
++'#selpk .spb{width:min(760px,96vw);max-height:84vh;overflow:auto;background:var(--card,#fff);color:var(--ink,#1f2937);border-radius:16px;padding:10px;box-shadow:0 12px 40px rgba(0,0,0,.45);font-family:inherit}'
++'#selpk .spt{font-weight:800;font-size:15px;padding:4px 6px 8px;opacity:.75}'
++'#selpk .spi{padding:11px 14px;margin:5px 0;border:2px solid var(--line,#e5e7eb);border-radius:12px;font-size:17px;line-height:1.4;white-space:normal;overflow-wrap:anywhere;text-align:left;cursor:pointer}'
++'#selpk .spi:hover,#selpk .spi:focus{border-color:#f97316;background:rgba(249,115,22,.12);outline:none}#selpk .spi.on{border-color:#f97316;font-weight:800;background:rgba(249,115,22,.2)}#selpk .spi.nil{font-size:14px;opacity:.7;text-align:center}';
+d.head.appendChild(st);
+function close(){if(ov){ov.remove();ov=null}}
+function open(s){close();ov=d.createElement('div');ov.id='selpk';var b=d.createElement('div');b.className='spb';var t=d.createElement('div');t.className='spt';t.textContent='Chọn đáp án';b.appendChild(t);
+ Array.prototype.forEach.call(s.options,function(o,i){var it=d.createElement('div');it.className='spi'+(o.value===''?' nil':'')+(i===s.selectedIndex&&o.value!==''?' on':'');it.tabIndex=0;it.setAttribute('role','option');it.textContent=o.value===''?'— Bỏ chọn —':o.text;
+  var pick=function(ev){ev.stopPropagation();s.value=o.value;close();s.dispatchEvent(new Event('input',{bubbles:true}));s.dispatchEvent(new Event('change',{bubbles:true}));try{s.focus()}catch(x){}};
+  it.addEventListener('click',pick);it.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();pick(ev)}});b.appendChild(it)});
+ ov.appendChild(b);ov.addEventListener('click',close);d.body.appendChild(ov);var on=b.querySelector('.spi.on');if(on)on.scrollIntoView({block:'center'})}
+d.addEventListener('mousedown',function(e){var s=e.target&&e.target.closest&&e.target.closest('#mbox select');if(!s||s.disabled||e.button!==0)return;if(window.matchMedia&&matchMedia('(pointer:coarse)').matches)return;e.preventDefault();open(s)},true);
+d.addEventListener('keydown',function(e){if(e.key==='Escape')close()},true);
+})();
+</script>
 </body></html>
